@@ -7,5 +7,5 @@ Browse blocks, transactions, etc...
 JSON API,
 Live transactions/blocks,
 Client-side and server-side versions,
-Wallet (electrum deterministic)
+Web-wallet (electrum deterministic), dynamic wallet switching (single login for multiple coins), mobile browser QR scaning
 
