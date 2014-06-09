@@ -1,0 +1,24 @@
+	</div>
+</div>
+
+<p>
+  <center>
+  Please help support development and server cost:<br style='clear:both;'/><br style='clear:both;'/>
+  VTC: <a href="{{=it.script_name_base}}/vtc/address/VgsLqV3BFb1SmaMQbQgdfeuWqJgfnrhFyE">VgsLqV3BFb1SmaMQbQgdfeuWqJgfnrhFyE</a><br style='clear:both;'/>
+  </center>
+  <br/>
+  <center><a href="{{=it.script_name_base}}/static/api.txt">API</a> - <a href="mailto:blockexplorer@sovereignshare.com">Contact</a> - <a href="https://github.com/a432511/bkchain.org">Source code + Static version</a></center>
+</p>
+
+{{ if (it.address !== undefined) { }}
+<script src="{{=it.source_base}}/static/js/qrcode.js"></script>
+<script type="text/javascript">
+var keyValuePair = {};
+keyValuePair["qrcode_public"] = "{{= it.address.addr }}";
+ninja.qrCode.showQrCode(keyValuePair, 5);
+</script>
+{{ } }}
+
+</body>
+</html>
+
