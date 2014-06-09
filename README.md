@@ -1,4 +1,4 @@
-AirWallet.me
+<a href="http://airwallet.me">AirWallet</a>
 Client-side web wallet and blockexplorer for Bitcoin, Litecoin, Dogecoin, Vertcoin, and PeerCoin based on bkchain
 
 Features:
