@@ -11,7 +11,8 @@ var express = require('express'),
     
 var proxy = new httpProxy.createProxyServer({ ws: true, agent: http.globalAgent });
 
-var api_local_hosted = false;
+var api_local_hosted = true;
+
 var api_remote_url_raw = 'https://bkchain.org/';
 var api_remote_url_ws = 'ws://bkchain.org/';
 
@@ -42,7 +43,32 @@ app.set('view options', {layout: false});
 app.set("view engine", "html");
 app.engine('.html', engines.dot);
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use( bodyParser.urlencoded({ extended: false }) ); // to support URL-encoded bodies
+
 app.use('/static', express.static(__dirname + '/static'));
+
+
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://api.airwallet.me');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 function get_ws_api_url(currency) {
   if (api_local_hosted) {
@@ -92,6 +118,7 @@ function get_raw_api_url(currency) {
 
 var query_api = function(req,cb){
      var payload = {'method': req['method'], 'id': 1, 'jsonrpc': 1, 'params': req['params']};
+		 console.log(payload);
      request.post({ url: get_raw_api_url(req['currency']), body: JSON.stringify(payload) }, function(err,response,body){
            if (err){
                  cb(err);
@@ -103,9 +130,17 @@ var query_api = function(req,cb){
 
 function route_api_query(data, payload, json_callback) {
   async.map([payload], query_api, function(e, r) {
-    // Request template engine to display our block
-    data['result'] = r[0]['result'];
-    json_callback('api', data);
+		if (e)
+		{
+			console.log("That service isnt running.");
+		}
+		else
+		{
+			// Request template engine to display our block
+			console.log(r);
+			data['result'] = r[0]['result'];
+			json_callback('api', data);
+		}
   });
 }
 
@@ -144,7 +179,21 @@ function route_api(data, url_parts, req, json_callback) {
           route_api_query(data, {'currency': data['currency_api'], 'method': 'tx_index', 'params': { 'index': Number(parameter) }}, json_callback);
           break;
         case 'push':
-          break;
+				var data1 = '';
+					for( var prop in req.body )
+					{
+						data1 = JSON.parse(prop);
+					}
+					route_api_query(data, {'currency': data['currency_api'], 'method': 'tx_push', 'params': [data1['hexdata']]}, json_callback);
+				
+				/*
+					var data1 = '';
+					for( var prop in req.body )
+					{
+						data1 = JSON.parse(prop);
+					}
+					route_api_query(data, {'currency': data['currency_api'], 'method': 'sendrawtransaction', 'params': data1}, json_callback);
+          */break;
         }
         break;
       case 'address':
@@ -172,7 +221,8 @@ function route_api(data, url_parts, req, json_callback) {
 app.set('json spaces', 1);
 
 // Page selector
-app.get(/^(.*)$/, function(req, res) {
+app.all(/^(.*)$/, function(req, res) {
+
     var data = { _def: defs, layout: false, strip: false, title_details: 'bkchain.org', script_name_base: '', source_base: '' };
     var url = req.params[0];
     var url_parts = url.split('/').filter(function(e){return e});
@@ -180,7 +230,7 @@ app.get(/^(.*)$/, function(req, res) {
     // Transform /btc/search?search=XXX into /btc/search/XXX
     if (url_parts.length == 2 && url_parts[1] == 'search' && req.param('search') !== undefined)
       url_parts.push(req.param('search'));
-      
+
     // Defer routing to shared client/server url parser system
     if (!route_prepare_data(data, '/', url_parts))
       return;
@@ -192,6 +242,7 @@ app.get(/^(.*)$/, function(req, res) {
       route_url(data, url_parts, function(request_type, data) { res.render(request_type + '.html', data); }, function(url) { res.redirect('/' + url); });
     }
 });
+
 
 var server = require('http').createServer(app);
 
