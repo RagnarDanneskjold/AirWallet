@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-<meta keywords="Bitcoin BTC dogecoin doge peercoin litecoin vertcoinblock explorer chain blockchain cryptocurrency cryptocoin">
+<meta keywords="Bitcoin BTC block explorer chain blockchain cryptocurrency cryptocoin">
 <meta name="description" content="airwallet, me">
 <title>AirWallet.me</title>
 <script src="./static/js/jquery-2.1.0.min.js" type="text/javascript"></script>
@@ -12,6 +12,11 @@
 <link href="./static/css/jquery.treetable.css" rel="stylesheet"/>
 <script src="./static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+var USE_QUERY_URL = 'http://api.airwallet.me:3000/';
+USE_QUERY_URL = 'http://bkchain.org/';
+
+
       $(document).ready(function() {
         $("abbr.timeago").timeago();
         $("[rel='tooltip']").tooltip();
@@ -77,12 +82,13 @@
 <script src="./static/lazarjs/databr.js"></script>
 
 <!-- various globals for this currency -->
+<script src="./static/js/mod/chain_mod.js"></script>
 <script src="./static/js/mod/index_mod.js"></script>
 <script type="text/javascript">
 
         // Default values for various globals that might change depending on the currency
         var defaultSelectedCurrency = "BTC",
-						selectedCurrency = defaultSelectedCurrency,address_version,currency_short,currency_long,coinfactor,coindecimals,donateAddress,defaultFees;
+						selectedCurrency = defaultSelectedCurrency,address_version,currency_short,currency_long,coinfactor,coindecimals,donateAddress,defaultFees, wif_version = 128;
 						
 				var currencyData = {
 					"BTC" : {
@@ -123,7 +129,7 @@
 						coindecimals 		: 'auto',
 						donateAddress 	 : "PEiZ7r4KR85izAhfzQKJgJxdQkQ6PPXXEX",
 						defaultFees 		 : 0.01,
-					},
+					}/*,
 					
 					"VTC" : {
 						address_version : 71,
@@ -133,7 +139,7 @@
 						coindecimals 		: 'auto',
 						donateAddress 	 : "VgsLqV3BFb1SmaMQbQgdfeuWqJgfnrhFyE",
 						defaultFees 		 : 0.001,
-					}
+					}*/
 				};
 				
 				
@@ -514,8 +520,46 @@ canvas, img {
 	z-index: 900;
 	display: none;	
 }
-</style>
 
+.backup-entry {
+  height: 140px;
+}
+
+.backup-public {
+  float: left;
+}
+
+.backup-public-qrcode {
+  float: left;
+}
+
+.backup-public-address {
+  float: left;
+  padding-left: 10px;
+}
+
+.backup-private {
+  text-align: right;
+}
+
+.backup-private-qrcode {
+  float: right;
+  padding-top: 30px;
+}
+
+.backup-private-address {
+  float: right;
+  padding-right: 10px;
+}
+
+.get-started-wrapper {
+	margin: 10px 0 40px;	
+}
+
+.strike {
+	text-decoration: line-through;	
+}
+</style>
 
 
 </head>
@@ -532,6 +576,14 @@ canvas, img {
             </ul>
           </li>
           <li><a href="#">Wallet <span class="label label-danger">beta</span></a></li>
+          <li class="dropdown"> <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            	<li class="active"><a href="http://Merchant.airwallet.me">Merchants</a></li>
+              <li><a href="http://Exchange.airwallet.me">Exchange</a></li>
+              <li><a href="http://StarfieldEquity.com">Equity Brokerage</a></li>
+              <li><a href="http://BlockOfTrust.com">Real Estate</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -562,7 +614,7 @@ canvas, img {
             </div>
             <div id="open-wallet-signin">
               <div class="form-group">
-                <input id="electrum-seed" type="password" class="form-control" placeholder="Your wallet seed or master public key"/>
+                <input id="electrum-seed" type="password" class="form-control" placeholder="Your electrum-like 12 words seed or master public key"/>
               </div>
               <div class="form-group" id="signin-actions">
                 <button id="open-wallet" class="btn" disabled="disabled"><span class="glyphicon glyphicon-circle-arrow-up"></span> Open Wallet</button>
@@ -584,10 +636,24 @@ canvas, img {
               </div>
             </div>
           </div>
-		  <center><p><img src="airwallet cloud banner.jpg" width="375" height="130" alt=""/></p></center>
         </form>
+        <div class="col-sm-12">
+          <div class="get-started-wrapper" align="center">
+            <a href="http://guide.airwallet.me" class="btn btn-primary btn-lg active" role="button"><span class="glyphicon glyphicon-ok-sign"></span> Get Started</a>
+          </div>
+        </div>
+        <center>
+          
+           <p>&nbsp;</p>
+          <p><img src="airsewallet10.jpg" width="250" height="250" alt=""/></p>
+          <p>&nbsp;</p>
+		   
+            
+	    </center>
         <div class="col-sm-4">
-          <h3>Secure & Private</h3>
+        
+        
+              <h3>Secure & Private</h3>
           <p><span class="glyphicon glyphicon-ok"></span> 100% client-side wallet.</p>
           <p><span class="glyphicon glyphicon-ok"></span> Private keys never leave your browser.</p>
           <p><span class="glyphicon glyphicon-ok"></span> No data is stored on server.</p>
@@ -607,13 +673,17 @@ canvas, img {
           <p><span class="glyphicon glyphicon-ok"></span> Accessible from any web browser.</p>
         </div>
       </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
       <div id="wallet-div" class="row">
         <div id="wallet-menu-div" class="col-sm-2">
           <ul class="nav nav-pills nav-stacked">
+         
             <li class="nav-header">Wallet menu</li>
             <li class="active"><a href="#" id="addresses-nav"><i class="fa fa-align-justify"></i>Addresses</a></li>
             <li><a href="#" id="payment-nav">Send Payment</a></li>
             <li><a href="#" id="publickey-nav">Public Key</a></li>
+            <li><a href="#" id="backup-nav">Backup Keys</a></li>
             <li class="divider"></li>
             <li><a href="index.html" id="signout-nav">Signout</a></li>
           </ul>
@@ -700,6 +770,10 @@ canvas, img {
             <p>No private keys can be generated from it, so it is safe to use on unsecured computers to check your account balance.</p>
             <p>In a future version, it will also be used to create cold storage transaction.</p>
           </div>
+          <div id="backup-div" class="col-sm-10">
+            <div id="backup-receiving-div"/>
+            <div id="backup-change-div"/>
+          </div>
         </div>
       </div>
       <div id="verifyModal" class="modal fade">
@@ -741,7 +815,7 @@ canvas, img {
 <center>
 <a href="http://merchant.airwallet.me">  <p>&nbsp;</p>
 <p>&nbsp;</p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/qbmsrTttXaM" frameborder="0" allowfullscreen></iframe>
+<iframe width="340" height="190" src="//www.youtube.com/embed/qbmsrTttXaM" frameborder="0" allowfullscreen></iframe>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>AirWallet for Merchants</p>
@@ -753,22 +827,39 @@ canvas, img {
       <p>&nbsp;</p>
       <p><a href="http://suisse.airwallet.me">SuisseCoin</a></p>
   <a href="http://suisse.airwallet.me">
-  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p>
+  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p></a>
   <p>&nbsp;</p>
-  </a><a href="http://lotto.suissecoin.info">Lottery</a><a href="http://suisse.airwallet.me">
   <p>&nbsp;</p>
   </a>
-  <a href="http://lotto.suissecoin.info"><p><img src="lottery-balls-cash.jpg" width="575" height="250" alt=""/></p></a>
+  <a href="http://price.airwallet.me" target="_blank"><p>Wow Such Calculator</p>
+  <a href="http://price.airwallet.me" target="_blank"><p><img src="Dogecoin_logo.png" width="150" height="150" alt=""/></p>
+  <p>&nbsp;</p>
+  </a>
+  <p>&nbsp;</p>
+  <a href="http://casino.airwallet.me" target="_blank"><p>Very Casino</p>
+  <a href="http://casino.airwallet.me" target="_blank"><p><img src="MultiDoge.png" width="150" height="150" alt=""/></p>
+  <p>&nbsp;</p>
+  </a>
+  <p>&nbsp;</p>
+  <a href="http://lotto.suissecoin.info">Lottery</a><a href="http://suisse.airwallet.me">
+  <p>&nbsp;</p>
+  </a>
+  <a href="http://lotto.suissecoin.info"><p><img src="lottery-balls-cash.jpg" width="340" height="199" alt=""/></p></a>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-     
+  <a href="http://www.dogedice.me/?play=42868">
+  <p><img src="banner.jpg" width="340" height="60" alt=""/></p></a>
+      <p>&nbsp;</p>
+  <p>&nbsp;</p> 
       <a href="http://security.airwallet.me" target="_blank">AirWallet Security Center</a>
   <p>
-      <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="400" height="300" alt=""/></p>
+      <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="340" height="262" alt=""/></p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
+      <a href="http://blocklens.com" target="_blank"><p><img src="blocklens.jpg" width="340" height="340" alt=""/></p>
       <p>&nbsp;</p>
-      <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="380" height="310" alt=""/></p></a>
+      <p>&nbsp;</p>
+      <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="340" height="270" alt=""/></p></a>
   <p>  
   <p>
     
@@ -777,14 +868,18 @@ canvas, img {
     <p><a href="http://BlockVC.com">AirWallet is a BlockVC Joint Venture</a>        <a href="http://blockvc.com">
       </a></p>
     <a href="http://blockvc.com">
-    <p><img src="delorean.jpg" width="367" height="240" alt=""/></p>
+    <p><img src="delorean.jpg" width="340" height="230" alt=""/></p></a> 
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    </a>
-    <strong>Request your own personalized airwallet - YourName.AirWallet.me</strong>      
-      <p><a href="mailto:admin@airwallet.me">contact admin@airwallet.me</a>
-      <p>      
-    <p>*Special Thanks to bkchain for the source code and Aaron for the mods* 
+    <p>Some iPhone users are unable to use native QR scanner.  If you have issues, please install a standalone QR scanner or browser:</p>
+    <p><a href="https://itunes.apple.com/us/app/scan-code-qr-code-reader/id828167977?ls=1&mt=8" target="_blank">QR Scanner</a>  |  <a href="https://itunes.apple.com/us/app/clear-browser-full-screen/id536117231?mt=8" target="_blank">QR Browser</a></p>
+    
+    <p>&nbsp;</p>
+    <p><strong>Request your own personalized airwallet - YourName.AirWallet.me</strong>      
+    </p>
+    <p><a href="mailto:admin@airwallet.me">contact admin@airwallet.me</a>
+    <p>      
+    <p>*Thanks to bkchain, for the source code and Aaron for the mods* 
     </p>
     <p>&nbsp;</p>
     <p><a href="http://guide.airwallet.me">Guide</a> - <a href="#/static/api.txt">API</a> - <a href="mailto:admin@airwallet.me">Contact</a> - <a href="https://github.com/RagnarDanneskjold/AirWallet">Source code + Static version</a></p>
