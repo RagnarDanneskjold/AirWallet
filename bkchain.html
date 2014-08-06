@@ -1,24 +1,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
-<head>
+    <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta keywords="undefined BTC bitcoin dogecoin peercoin vertcoin litecoin block explorer chain blockchain cryptocurrency cryptocoin">
-
-
-
-    <meta name="description" content="AirWallet">
-    <title>AirWallet Explorer</title>
-
-
+    <meta keywords="BTC block explorer chain blockchain cryptocurrency cryptocoin">
+    <meta name="description" content="bkchain explorer">
+    <title>bkchain explorer</title>
     <script src="./static/js/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="./static/js/jquery.timeago.js" type="text/javascript"></script>
     <link href="./static/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./static/css/jquery.treetable.css" rel="stylesheet" />
-
     <script src="./static/js/bootstrap.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("abbr.timeago").timeago();
@@ -39,289 +31,295 @@
         jQuery.timeago.settings.strings.year = "a year";
         jQuery.timeago.settings.strings.years = "%d years";
     </script>
-
-
-
-
     <script src="./static/js/mod/chain_mod.js"></script>
     <script src="./static/js/qrcode.js"></script>
-
-
     <style>
-        @media (max-width: 767px) {
-            .navbar-nav .open .dropdown-menu {
-                position: absolute;
-            }
-            body {
-                font-size: 13px;
-            }
-            .hash {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                display: block;
-                width: 350px;
-            }
-        }
-        #form-pass {
-            width: 680px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            border-width: 1px;
-            border-color: #ddd;
-            border-style: solid;
-            border-radius: 4px;
-            padding: 15px;
-        }
-        #form-pass #electrum-seed {
-            width: 400px;
-        }
-        #form-pass button {
-            width: 120px;
-        }
-        #form-pass .progress {
-            margin-top: 20px;
-            margin-bottom: 5px;
-        }
-        #form-pass #electrum-generated-seed {
-            width: 640px;
-            margin-top: 20px;
-            margin-bottom: 5px;
-        }
-        .nav .nav-header {
-            cursor: default;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .glyphicon-refresh-animate {
-            -webkit-animation: spin 4s linear infinite;
-            -moz-animation: spin 4s linear infinite;
-            animation: spin 4s linear infinite;
-        }
-        @-moz-keyframes spin {
-            100% {
-                -moz-transform: rotate(360deg);
-            }
-        }
-        @-webkit-keyframes spin {
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-        @keyframes spin {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-        @media (max-width: 480px) {
-            .hash {
-                width: 200px;
-            }
-        }
-        /* Space out content a bit */
-        body {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        td {
-            white-space: nowrap;
-        }
-        /* Custom page header */
-        .header {
-            border-bottom: 2px solid #e5e5e5;
-        }
+@media (max-width: 767px) {
+.navbar-nav .open .dropdown-menu {
+	position: absolute;
+}
+body {
+	font-size: 13px;
+}
+.hash {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	width: 350px;
+}
+}
+#form-pass {
+	width: 680px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	border-width: 1px;
+	border-color: #ddd;
+	border-style: solid;
+	border-radius: 4px;
+	padding: 15px;
+}
+#form-pass #electrum-seed {
+	width: 400px;
+}
+#form-pass button {
+	width: 120px;
+}
+#form-pass .progress {
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+#form-pass #electrum-generated-seed {
+	width: 640px;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+.nav .nav-header {
+	cursor: default;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.glyphicon-refresh-animate {
+	-webkit-animation: spin 4s linear infinite;
+	-moz-animation: spin 4s linear infinite;
+	animation: spin 4s linear infinite;
+}
+ @-moz-keyframes spin {
+ 100% {
+ -moz-transform: rotate(360deg);
+}
+}
+ @-webkit-keyframes spin {
+ 100% {
+ -webkit-transform: rotate(360deg);
+}
+}
+ @keyframes spin {
+ 100% {
+ -webkit-transform: rotate(360deg);
+ transform: rotate(360deg);
+}
+}
+ @media (max-width: 480px) {
+.hash {
+	width: 200px;
+}
+}
+/* Space out content a bit */
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+td {
+	white-space: nowrap;
+}
+/* Custom page header */
+.header {
+	border-bottom: 2px solid #e5e5e5;
+}
         /* Customize container */
         @media (min-width: 1000px) {
-            .container {
-                max-width: 970px;
-            }
-        }
-        /* Make the masthead heading the same height as the navigation */
-        .header h3 {
-            margin-top: 0;
-            margin-bottom: 0;
-            line-height: 40px;
-            padding-bottom: 6px;
-        }
-        #wrapper {
-            padding: 40px 0px 0px 0px;
-            text-align: left;
-            //width: 970px;   
-            //margin-left: auto;
-            //margin-right: auto; 	
-            //padding: 16px;
-            //min-height: 100%;
+.container {
+	max-width: 970px;
+}
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 40px;
+	padding-bottom: 6px;
+}
+#wrapper {
+	padding: 40px 0px 0px 0px;
+	text-align: left;
+ //width: 970px;
+ //margin-left: auto;
+ //margin-right: auto;
+ //padding: 16px;
+ //min-height: 100%;
+}
+a:link {
+	text-decoration: none;
+	color: #00308C;
+}
+a:visited {
+	text-decoration: none;
+	color: #5A14FF;
+}
+a:hover {
+	text-decoration: none;
+	color: #37BE00;
+}
+h1 {
+	display: inline;
+	font-weight: normal;
+	font-size: 14px;
+}
+#header {
+	height: 52px;
+	font-size: 12px;
+	margin-bottom: 20px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #ccc;
+}
+#header-nav {
+	float: right;
+}
+#header-menu {
+	float: left;
+	margin-top: 2px;
+	clear: left;
+}
+.logo {
+	float: left;
+}
+#footer {
+	text-align: center;
+}
+.tx-vin {
+	margin-right: -5%;
+}
+.tx-vout {
+	margin-left: -5%;
+}
+.tx-list {
+	margin-top: 32px;
+}
+.tx-separator {
+	padding: -30px 10px -30px 10px;
+	float: left;
+}
+.tx-sm {
+	width: 970px;
+	border: 2px solid #ddd;
+	padding: 4px;
+	margin-bottom: 6px;
+}
+.tx-sm-caption {
+	width: 962px;
+	background-color: #E8E8E8;
+	padding: 6px;
+	border-bottom: 2px solid #ddd;
+}
+.addr-caption {
+	font-size: 16px;
+	font-weight: bold;
+}
+.pos {
+	color: #03700C;
+}
+.neg {
+	color: #9C0800;
+}
+.search-area {
+	margin-top: -6px;
+}
+#search {
+	width: 430px;
+}
+.error {
+	background-color: #FFE3EE;
+	width: 300px;
+	margin: 64px;
+	border: 1px solid #aaa;
+	box-shadow: 2px 2px 2px #aaa;
+	padding: 16px;
+	text-align: center;
+}
+.navbar-main {
+	float: left;
+	margin-top: 5px;
+}
+table.treetable tr.collapsed span.indenter a {
+	background-image: url(data:image/png;base64,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);
+}
+table.treetable tr.expanded span.indenter a {
+	background-image: url(data:image/png;base64,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);
+}
+#qrcode_public {
+	text-align: center;
+}
+.backup-entry {
+	height: 140px;
+}
+.backup-public {
+	float: left;
+}
+.backup-public-qrcode {
+	float: left;
+}
+.backup-public-address {
+	float: left;
+	padding-left: 10px;
+}
+.backup-private {
+	text-align: right;
+}
+.backup-private-qrcode {
+	float: right;
+	padding-top: 30px;
+}
+.backup-private-address {
+	float: right;
+	padding-right: 10px;
+}
+</style>
 
-        }
-        a:link {
-            text-decoration: none;
-            color: #00308C;
-        }
-        a:visited {
-            text-decoration: none;
-            color: #5A14FF;
-        }
-        a:hover {
-            text-decoration: none;
-            color: #37BE00;
-        }
-        h1 {
-            display: inline;
-            font-weight: normal;
-            font-size: 14px;
-        }
-        #header {
-            height: 52px;
-            font-size: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #ccc;
-        }
-        #header-nav {
-            float: right;
-        }
-        #header-menu {
-            float: left;
-            margin-top: 2px;
-            clear: left;
-        }
-        .logo {
-            float: left;
-        }
-        #footer {
-            text-align: center;
-        }
-        .tx-vin {
-            margin-right: -5%;
-        }
-        .tx-vout {
-            margin-left: -5%;
-        }
-        .tx-list {
-            margin-top: 32px;
-        }
-        .tx-separator {
-            padding: -30px 10px -30px 10px;
-            float: left;
-        }
-        .tx-sm {
-            width: 970px;
-            border: 2px solid #ddd;
-            padding: 4px;
-            margin-bottom: 6px;
-        }
-        .tx-sm-caption {
-            width: 962px;
-            background-color: #E8E8E8;
-            padding: 6px;
-            border-bottom: 2px solid #ddd;
-        }
-        .addr-caption {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .pos {
-            color: #03700C;
-        }
-        .neg {
-            color: #9C0800;
-        }
-        .search-area {
-            margin-top: -6px;
-        }
-        #search {
-            width: 430px;
-        }
-        .error {
-            background-color: #FFE3EE;
-            width: 300px;
-            margin: 64px;
-            border: 1px solid #aaa;
-            box-shadow: 2px 2px 2px #aaa;
-            padding: 16px;
-            text-align: center;
-        }
-        .navbar-main {
-            float: left;
-            margin-top: 5px;
-        }
-        table.treetable tr.collapsed span.indenter a {
-            background-image: url(data:image/png;base64,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);
-        }
-        table.treetable tr.expanded span.indenter a {
-            background-image: url(data:image/png;base64,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);
-        }
-        #qrcode_public {
-            text-align: center;
-        }
-    </style>
+    <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-46282374-1', 'bkchain.org');
+  ga('send', 'pageview');
 
+    </script>-->
 
-</head>
+    </head>
 
-<body>
-
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-
-        <div class="container-fluid" id="navbar_content">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="bkchain.html#/btc" class="navbar-brand">AirWallet.me</a>
-                <div class="navbar-main">
-                    <ul class="nav nav-pills list-inline">
-                        <li class="dropdown" id="navbar_currency_dropdown">
-                            <a href="bkchain.html#/btc" class="dropdown-toggle" data-toggle="dropdown"> <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="active"><a href="bkchain.html#/btc">Bitcoin</a>
-                                </li>
-                                <li><a href="bkchain.html#/ltc">Litecoin</a>
-                                </li>
-                                <li><a href="bkchain.html#/ppc">Peercoin</a>
-                                </li>
-                                <li><a href="bkchain.html#/doge">Dogecoin</a>
-                                </li>
-                                <li><a href="bkchain.html#/vtc">Vertcoin</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li><a href="index.html#/btc">Wallet <span class="label label-danger">alpha</span></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="collapse navbar-collapse" id="mainNav">
-
-                <form class="navbar-form navbar-right form-inline" method="post" onsubmit="main_search(); return false;">
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="search" name="search" placeholder="block id, block hash, transaction hash or address (BTC)" />
-                    </div>
-                    <button type="submit" class="btn btn-success">Search</button>
-                </form>
-            </div>
+    <body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid" id="navbar_content">
+    <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a href="bkchain.html#/btc" class="navbar-brand">AirWallet.me</a>
+          <div class="navbar-main">
+        <ul class="nav nav-pills list-inline">
+              <li class="dropdown" id="navbar_currency_dropdown"> <a href="bkchain.html#/btc" class="dropdown-toggle" data-toggle="dropdown"> <b class="caret"></b> </a>
+            <ul class="dropdown-menu">
+                  <li class="active"><a href="bkchain.html#/btc">Bitcoin</a> </li>
+                  <li><a href="bkchain.html#/ltc">Litecoin</a> </li>
+                  <li><a href="bkchain.html#/ppc">Peercoin</a> </li>
+                  <li><a href="bkchain.html#/doge">Dogecoin</a> </li>
+                  <li><a href="bkchain.html#/vtc">Vertcoin</a> </li>
+                </ul>
+          </li>
+              <li><a href="index.html#/btc">Wallet <span class="label label-danger">beta</span></a> </li>
+              
+            </ul>
+      </div>
         </div>
+    <div class="collapse navbar-collapse" id="mainNav">
+          <form class="navbar-form navbar-right form-inline" method="post" onsubmit="main_search(); return false;">
+        <div class="form-group">
+              <input type="text" class="form-control" id="search" name="search" placeholder="block id, block hash, transaction hash or address (BTC)" />
+            </div>
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+        </div>
+  </div>
     </nav>
-
-    <div class='container'>
-        <div id='wrapper'>
-
-            <div id="content">Loading...</div>
-            <script src="./static/js/async.js" type="text/javascript"></script>
-            <script type="text/javascript">
+<div class='container'>
+      <div id='wrapper'>
+    <div id="content">Loading...</div>
+    <script src="./static/js/async.js" type="text/javascript"></script> 
+    <script type="text/javascript">
                 var livetxTemplate = function anonymous(it) {
                     var out = '      <tr>\r\n\t    <td class="text-left"><a href=\'' + (it.script_name) + '/tx/' + (it.tx.hash) + '\'>' + (it.tx.hash.substring(0, 20) + '...') + '</a></td>\r\n\t    <td class="text-center"><abbr class="timeago" rel="tooltip" data-animation="false" title="' + (it.tx.time) + 'Z">' + (it.tx.time) + ' UTC</abbr></td>\r\n\t    <td class="text-right">' 
 										+ (it.tx.output / it.coin_factor) 
@@ -362,7 +360,12 @@
                     livetx = document.getElementById("livetx");
                     liveblock = document.getElementById("liveblock");
 
-                    var livetx_url = "ws://bkchain.org/" + data['currency_api'] + "/livetx";
+                    //var livetx_url = "ws://bkchain.org/" + data['currency_api'] + "/livetx";
+										
+										//var livetx_url = USE_WS_URL+"ws://199.217.119.225:"+get_ws_currency_port(data['currency_api']);//8352";///" + data['currency_api'] + "/livetx";
+										var livetx_url = "ws://bkchain.org/" + data['currency_api'] + "/livetx";
+										
+										// crash override
 										if (data['livetx_url'])
 										{
 											livetx_url = data['livetx_url'];
@@ -375,7 +378,7 @@
                             subscribe: 'livetx'
                         }));
                     };
-                    websocket.onerror = function (evt) {};
+                    websocket.onerror = function (evt) { console.log(evt); };
                     websocket.onmessage = function (evt) {
                         writeToScreen(data, JSON.parse(evt.data));
                     };
@@ -418,6 +421,7 @@
 
 
                     // TODO: Switch to jquery
+										// UNDO: please dont.
                     if (itemtype == 'tx') {
                         data2.tx = message;
                         pre.innerHTML = livetxTemplate(data2);
@@ -453,8 +457,12 @@
 
                     $("abbr.timeago").timeago();
                 }
-            </script>
-            <script type="text/javascript">
+            </script> 
+    <script type="text/javascript">
+						
+						
+
+
                 var current_currency;
                 var query_api = function (request, cb) {
                     var payload = {
@@ -463,11 +471,14 @@
                         'jsonrpc': 1,
                         'params': request['params']
                     };
+										//var use_url = "http://199.217.119.225:" + get_p_currency_port(request['currency']);
 										var use_url = 'https://bkchain.org/api/raw/' + request['currency'];
+										
 										if (request['currency']=='vtc')
 										{
-											use_url = 'http://vtc.sovereignshare.com:5909/';	
+											//use_url = 'http://vtc.sovereignshare.com:5909/';	
 										}
+										//console.log(use_url);
                     $.post(use_url, JSON.stringify(payload), function (body) {
                         cb(null, body);
                     });
@@ -491,11 +502,13 @@
                     if ('' + (it.currency_short) == 'DOGE') {
                         out += ' class="active"';
                     }
-                    out += '><a href="' + (it.script_name_base) + '/doge">Dogecoin</a></li>\r\n<li';
+                    out += '><a href="' + (it.script_name_base) + '/doge">Dogecoin</a></li>\r\n';
+										/*<li';
                     if ('' + (it.currency_short) == 'VTC') {
                         out += ' class="active"';
                     }
-                    out += '><a href="' + (it.script_name_base) + '/vtc">Vertcoin</a></li>\r\n              </ul>\r\n            </li>\r\n';
+                    out += '><a href="' + (it.script_name_base) + '/vtc">Vertcoin</a></li>\r\n              ';*/
+										out += '</ul>\r\n            </li>\r\n';
                     if (undefined) {
                         out += '\r\n            <li><a href="bkchain.html#">Wallet <span class="label label-danger">alpha</span></a></li>\r\n';
                     } else if (true) {
@@ -503,6 +516,19 @@
                     } else {
                         out += '\r\n            <li><a href="' + (it.script_name) + '/wallet">Wallet <span class="label label-danger">exp</span></a></li>\r\n';
                     }
+										
+										
+										// EDIT HERE FOR SECOND MENU
+										out += '<li class="dropdown"> <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>'
+            + '<ul class="dropdown-menu">'
+                  + '<li class="active"><a href="http://merchant.airwallet.me">Merchants</a></li>'
+                  + '<li><a href="http://exchange.airwallet.me">Exchange</a></li>'
+                  + '<li><a href="http://StarfieldEquity.com">Equity Brokerage</a></li>'
+                  + '<li><a href="http://BlockOfTrust.com">Real Estate</a></li>'
+               + ' </ul>'
+         + ' </li>';
+										
+										
                     out += '\r\n          </ul>\r\n        </div>\r\n      </div>\r\n      <div class="collapse navbar-collapse" id="mainNav">\r\n';
                     if (true) {
                         out += '\r\n        <form class="navbar-form navbar-right form-inline" method="post" onsubmit="main_search(); return false;">\r\n';
@@ -832,11 +858,13 @@
                         data['default_fees'] = 0.001;
                         data['address_version'] = 71;
                         data['donation_address'] = "VgsLqV3BFb1SmaMQbQgdfeuWqJgfnrhFyE";
-												data['livetx_url'] = 'ws://vtc.sovereignshare.com:5919';
+												//data['livetx_url'] = 'ws://vtc.sovereignshare.com:5919';
+												//data['api_port'] = 8352;
                         break;
                     default:
                         return false;
                     }
+										data['wif_version'] = 128 + data['address_version'];
                     return true;
                 }
 
@@ -857,11 +885,13 @@
                     if (request_type == 'index') {
                         var payload1 = {
                             'currency': data['currency_api'],
+														'port': data['api_port'],
                             'method': 'getlatesttransactions',
                             'params': {}
                         };
                         var payload2 = {
                             'currency': data['currency_api'],
+														'port': data['api_port'],
                             'method': 'getblocks',
                             'params': {
                                 'page': 0
@@ -880,6 +910,7 @@
                         var block_hash = url_parts[2];
                         var payload1 = {
                             'currency': data['currency_api'],
+														'port': data['api_port'],
                             'method': 'getblock',
                             'params': {
                                 'hash': block_hash
@@ -897,6 +928,7 @@
                         var tx_hash = url_parts[2];
                         var payload1 = {
                             'currency': data['currency_api'],
+														'port': data['api_port'],
                             'method': 'getrawtx',
                             'params': {
                                 'hash': tx_hash
@@ -914,6 +946,7 @@
                         var address = url_parts[2];
                         var payload1 = {
                             'currency': data['currency_api'],
+														'port': data['api_port'],
                             'method': 'getaddress',
                             'params': {
                                 'address': address
@@ -1075,72 +1108,87 @@
                         window.location.hash = '/' + location;
                     });
                 }
-            </script>
-        </div>
+            </script> 
+  </div>
     </div>
-
-    <p>
-        <center>
-			
-			<a href="http://merchant.airwallet.me">  <p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<iframe width="560" height="315" src="//www.youtube.com/embed/qbmsrTttXaM" frameborder="0" allowfullscreen></iframe>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>AirWallet for Merchants</p>
-			</a><a href="http://merchant.airwallet.me">  <p><img src="suissewallet5.jpg" width="214" height="230" alt=""/></p>
-			<p>&nbsp;</p>
-			</a>
-			<p><a href="http://faucet.airwallet.me">AirWallet Faucets</a></p>
-			  <a href="http://faucet.airwallet.me"><p><img src="ss1.png" width="300" height="300" alt=""/></p></a>
-			      <p>&nbsp;</p>
-			      <p><a href="http://suisse.airwallet.me">SuisseCoin</a></p>
-			  <a href="http://suisse.airwallet.me">
-			  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p>
-			  <p>&nbsp;</p>
-			  </a><a href="http://lotto.suissecoin.info">Lottery</a><a href="http://suisse.airwallet.me">
-			  <p>&nbsp;</p>
-			  </a>
-			  <a href="http://lotto.suissecoin.info"><p><img src="lottery-balls-cash.jpg" width="575" height="250" alt=""/></p></a>
-			  <p>&nbsp;</p>
-			  <p>&nbsp;</p>
-     
-			      <a href="http://security.airwallet.me" target="_blank">AirWallet Security Center</a>
-			  <p>
-			      <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="400" height="300" alt=""/></p>
-			      <p>&nbsp;</p>
-			      <p>&nbsp;</p>
-			      <p>&nbsp;</p>
-			      <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="380" height="310" alt=""/></p></a>
-			  <p>  
-			  <p>
+<p>
+      <center>
+<a href="http://merchant.airwallet.me">  <p>&nbsp;</p>
+<p>&nbsp;</p>
+<iframe width="375" height="200" src="//www.youtube.com/embed/qbmsrTttXaM" frameborder="0" allowfullscreen></iframe>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>AirWallet for Merchants</p>
+</a><a href="http://merchant.airwallet.me">  <p><img src="suissewallet5.jpg" width="214" height="230" alt=""/></p>
+<p>&nbsp;</p>
+</a>
+<p><a href="http://faucet.airwallet.me">AirWallet Faucets</a></p>
+  <a href="http://faucet.airwallet.me"><p><img src="ss1.png" width="300" height="300" alt=""/></p></a>
+      <p>&nbsp;</p>
+      <p><a href="http://suisse.airwallet.me">SuisseCoin</a></p>
+  <a href="http://suisse.airwallet.me">
+  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p></a>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  </a>
+  <a href="http://price.airwallet.me" target="_blank"><p>Wow Such Calculator</p>
+  <a href="http://price.airwallet.me" target="_blank"><p><img src="Dogecoin_logo.png" width="150" height="150" alt=""/></p>
+  <p>&nbsp;</p>
+  </a>
+  <p>&nbsp;</p>
+  <a href="http://casino.airwallet.me" target="_blank"><p>Very Casino</p>
+  <a href="http://casino.airwallet.me" target="_blank"><p><img src="MultiDoge.png" width="150" height="150" alt=""/></p>
+  <p>&nbsp;</p>
+  </a>
+  <p>&nbsp;</p>
+  <a href="http://lotto.suissecoin.info">Lottery</a><a href="http://suisse.airwallet.me">
+  <p>&nbsp;</p>
+  </a>
+  <a href="http://lotto.suissecoin.info"><p><img src="lottery-balls-cash.jpg" width="398" height="199" alt=""/></p></a>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <a href="http://www.dogedice.me/?play=42868"><p><img src="banner.jpg" width="728" height="90" alt=""/></p></a>
+      <p>&nbsp;</p>
+  <p>&nbsp;</p> 
+      <a href="http://security.airwallet.me" target="_blank">AirWallet Security Center</a>
+  <p>
+      <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="340" height="262" alt=""/></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <a href="http://blocklens.com" target="_blank"><p><img src="blocklens.jpg" width="340" height="340" alt=""/></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="349" height="276" alt=""/></p></a>
+  <p>  
+  <p>
     
-			    <br/>      
-			  <center>
-			    <p><a href="http://BlockVC.com">AirWallet is a BlockVC Joint Venture</a>        <a href="http://blockvc.com">
-			      </a></p>
-			    <a href="http://blockvc.com">
-			    <p><img src="delorean.jpg" width="367" height="240" alt=""/></p>
-			    <p>&nbsp;</p>
-			    <p>&nbsp;</p>
-			    </a>
-			    <strong>Request your own personalized airwallet - YourName.AirWallet.me</strong>      
-			      <p><a href="mailto:admin@airwallet.me">contact admin@airwallet.me</a>
-			      <p>      
-			    <p>*Special Thanks to bkchain for the source code and Aaron for the mods* 
-			    </p>
-			    <p>&nbsp;</p>
-			    <p><a href="http://guide.airwallet.me">Guide</a> - <a href="#/static/api.txt">API</a> - <a href="mailto:admin@airwallet.me">Contact</a> - <a href="https://github.com/RagnarDanneskjold/AirWallet.me">Source code + Static version</a></p>
-			    <p>&nbsp;</p>
-			  </center>
-			</p>
-			<iframe src="http://www.cryptocoincharts.info/v2/webmasters/priceBox/btc/usd" style="width: 300px; height: 200px;" frameborder="0" />
-			
-        </center>
+    <br/>      
+  <center>
+    <p><a href="http://BlockVC.com">AirWallet is a BlockVC Joint Venture</a>        <a href="http://blockvc.com">
+      </a></p>
+    <a href="http://blockvc.com">
+    <p><img src="delorean.jpg" width="367" height="240" alt=""/></p></a> 
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Some iPhone users are unable to use native QR scanner.  If you have issues, please install a standalone QR scanner or browser:</p>
+    <p><a href="https://itunes.apple.com/us/app/scan-code-qr-code-reader/id828167977?ls=1&mt=8" target="_blank">QR Scanner</a>  |  <a href="https://itunes.apple.com/us/app/clear-browser-full-screen/id536117231?mt=8" target="_blank">QR Browser</a></p>
+    
+    <p>&nbsp;</p>
+    
+    
+    <strong>Request your own personalized airwallet - YourName.AirWallet.me</strong>      
+      <p><a href="mailto:admin@airwallet.me">contact admin@airwallet.me</a>
+      <p>      
+    <p>*Thanks to bkchain for the source code and Aaron for the mods* 
     </p>
+    <p>&nbsp;</p>
+    <p><a href="http://guide.airwallet.me">Guide</a> - <a href="#/static/api.txt">API</a> - <a href="mailto:admin@airwallet.me">Contact</a> - <a href="https://github.com/RagnarDanneskjold/AirWallet">Source code + Static version</a></p>
+    <p>&nbsp;</p>
+  </center>
+</p>
+<iframe src="http://www.cryptocoincharts.info/v2/webmasters/priceBox/btc/usd" style="width: 300px; height: 200px;" frameborder="0" />
 
-
-
+</center>
+</p>
 </body>
-
 </html>
