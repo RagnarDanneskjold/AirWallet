@@ -162,404 +162,8 @@ USE_QUERY_URL = 'http://bkchain.org/';
     </script>
 <script src="./static/js/wallet.js"></script>
 <script src="./static/js/qrcode.js"></script>
-<style>
-#form-pass {
-	max-width: 680px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 40px;
-	margin-bottom: 40px;
-	border-width: 1px;
-	border-color: #ddd;
-	border-style: solid;
-	border-radius: 4px;
-	padding: 15px;
-}
-#form-pass .progress {
-	margin-top: 20px;
-	margin-bottom: 5px;
-}
-.nav .nav-header {
-	cursor: default;
-	font-size: 12px;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-.glyphicon-refresh-animate {
-	-webkit-animation: spin 4s linear infinite;
-	-moz-animation: spin 4s linear infinite;
-	animation: spin 4s linear infinite;
-}
-#form-pass #electrum-seed {
-	width: 100%;
-}
-#form-pass #electrum-generated-seed {
-	width: 100%;
-}
- @media (max-width: 767px) {
-.navbar-nav .open .dropdown-menu {
-	position: absolute;
-}
-body {
-	font-size: 13px;
-}
-.hash {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	display: block;
-	width: 350px;
-}
-}
-@-moz-keyframes spin {
-100% {
--moz-transform: rotate(360deg);
-}
-}
-@-webkit-keyframes spin {
-100% {
--webkit-transform: rotate(360deg);
-}
-}
-@keyframes spin {
-100% {
--webkit-transform: rotate(360deg);
-transform:rotate(360deg);
-}
-}
-@media (max-width: 480px) {
-.hash {
-	width: 200px;
-}
-}
-/* Space out content a bit */
-body {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-td {
-	white-space: nowrap;
-}
-/* Custom page header */
-.header {
-	border-bottom: 2px solid #e5e5e5;
-}
+<link href="./static/css/mod/index.css" type="text/css" rel="stylesheet" />
 
-/* Customize container */
-@media (min-width: 1000px) {
-.container {
-	max-width: 970px;
-}
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-	margin-top: 0;
-	margin-bottom: 0;
-	line-height: 40px;
-	padding-bottom: 6px;
-}
-#wrapper {
-	padding: 40px 0px 0px 0px;
-	text-align: left;
-}
-a:link {
-	text-decoration: none;
-	color: #00308C;
-}
-a:visited {
-	text-decoration: none;
-	color: #5A14FF;
-}
-a:hover {
-	text-decoration: none;
-	color: #37BE00;
-}
-h1 {
-	display : inline;
-	font-weight: normal;
-	font-size: 14px;
-}
-#header {
-	height: 52px;
-	font-size: 12px;
-	margin-bottom: 20px;
-	padding-bottom: 8px;
-	border-bottom: 1px solid #ccc;
-}
-#header-nav {
-	float: right;
-}
-#header-menu {
-	float: left;
-	margin-top: 2px;
-	clear: left;
-}
-.logo {
-	float: left;
-}
-#footer {
-	text-align: center;
-}
-.tx-vin {
-	margin-right: -5%;
-}
-.tx-vout {
-	margin-left: -5%;
-}
-.tx-list {
-	margin-top: 32px;
-}
-.tx-separator {
-	padding: -30px 10px -30px 10px;
-	float: left;
-}
-.tx-sm {
-	width: 970px;
-	border: 2px solid #ddd;
-	padding: 4px;
-	margin-bottom: 6px;
-}
-.tx-sm-caption {
-	width: 962px;
-	background-color: #E8E8E8;
-	padding: 6px;
-	border-bottom: 2px solid #ddd;
-}
-.addr-caption {
-	font-size: 16px;
-	font-weight: bold;
-}
-.pos {
-	color: #03700C;
-}
-.neg {
-	color: #9C0800;
-}
-.search-area {
-	margin-top: -6px;
-}
-#search {
-	width: 430px;
-}
-@media (max-width: 900px) {
-#search {
-	width: 360px;
-}
-}
-.error {
-	background-color: #FFE3EE;
-	width: 300px;
-	margin: 64px;
-	border: 1px solid #aaa;
-	box-shadow: 2px 2px 2px #aaa;
-	padding: 16px;
-	text-align: center;
-}
-.navbar-main {
-	float: left;
-	margin-top: 5px;
-}
-table.treetable tr.collapsed span.indenter a {
-	background-image: url(data:image/png;base64,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);
-}
-table.treetable tr.expanded span.indenter a {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAAHFJREFUeNpi/P//PwMlgImBQsA44C6gvhfa29v3MzAwOODRc6CystIRbxi0t7fjDJjKykpGYrwwi1hxnLHQ3t7+jIGBQRJJ6HllZaUUKYEYRYBPOB0gBShKwKGA////48VtbW3/8clTnBIH3gCKkzJgAGvBX0dDm0sCAAAAAElFTkSuQmCC);
-}
-.address_hide {
-	width: 80%;
-	border: 0px;
-	background-color: transparent;
-}
-.address_hide_note {
-	display: none;
-}
- @media (max-width: 340px) {
-#search {
-	width: 275px;
-}
-.container {
-	padding: 0 3px;
-}
-}
-@media (min-width: 600px){
-#txDest1 { width: 90%; }	
-}
- @media (max-width: 575px) {
-.indenter {
-	padding-left: 0px !important;
-}
-.address_hide {
-	width: 80% !important;
-	width: 80% !important;
-	border: 0px;
-	background-color: transparent;
-}
-.address_hide_note {
-	display: inline-block;
-}
-}
-#electrum-publickey, .break_word {
-	word-wrap: break-word;
-}
-.copy_to_clipboard {
-	display: none;/* doesnt want to work? */
-	text-align: center;
-}
-/* borrowed from boostrap */
-code {
-	font-size: 80%;
-}
-.bs-callout {
-	padding: 20px;
-	border-left: 3px solid #eee
-}
-.bs-callout h4 {
-	margin-top: 0;
-	margin-bottom: 5px
-}
-.bs-callout p:last-child {
-	margin-bottom: 0
-}
-.bs-callout code {
-	background-color: #fff;
-	border-radius: 3px
-}
-.bs-callout-danger {
-	background-color: #fdf7f7;
-	border-color: #d9534f
-}
-.bs-callout-danger h4 {
-	color: #d9534f
-}
-.bs-callout-warning {
-	background-color: #fcf8f2;
-	border-color: #f0ad4e
-}
-.bs-callout-warning h4 {
-	color: #f0ad4e
-}
-.bs-callout-info {
-	background-color: #f4f8fa;
-	border-color: #5bc0de
-}
-.bs-callout-info h4 {
-	color: #5bc0de
-}
-/*Mobile QR Scanner*/
-#theImageField {
-	width: 40%;
-	margin: 0 auto;
-	border: 1px solid #333;
-	display: none;
-}
-#scanResult {
-	display: none;
-	width: 100%;
-	margin: 0 auto;
-}
-#qr_code_value {
-	border: 3px solid #093;
-	padding: 5px;
-}
-#scanSelect {
-	text-align: center;
-}
-#scanStarted {
-	text-align: center;
-	position: absolute;
-	top: 0;
-	background-color: white;
-	width: 100%;
-	height: 1000px;
-	display: none;
-}
-canvas, img {
-	image-rendering: optimizeQuality;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -webkit-optimize-contrast;
-	image-rendering: optimize-contrast;
-	-ms-interpolation-mode: nearest-neighbor;
-}
-.qr_button {
-	display: inline-block; 
-	margin-left: 4px;
-	width: 26px; 
-	height: 26px; 
-	position: relative;
-	cursor: pointer;
-}
-.overlay_file_button, .overlay_file_loading {
-	display : inline-block;
-	left : 0px;
-	width : 26px;
-	height : 26px;
-	background : #FFF;
-	position: absolute;
-	font-size: 24px;
-}
-#scanField {
-	background: red;
-	/* updating font size makes the input larger */
-	font-size: 50px;
-	padding : 0;
-	margin : 0;
-}
-#theImageField { display: none; }
-.hidden_file_wrapper {
-	/* opacity : 0.5;  toggle this if you want to see where the real input lines up*/
-	opacity : 0;
-	/* each input will render differently on each browser, use this wrapper to make sure the target size is the same on each */
-	overflow: hidden;
-	width: 30px;
-	height : 30px;
-	padding: 0;
-	margin: 0;
-}
-.overlay_file_loading {
-	z-index: 900;
-	display: none;	
-}
-
-.backup-entry {
-  height: 140px;
-}
-
-.backup-public {
-  float: left;
-}
-
-.backup-public-qrcode {
-  float: left;
-}
-
-.backup-public-address {
-  float: left;
-  padding-left: 10px;
-}
-
-.backup-private {
-  text-align: right;
-}
-
-.backup-private-qrcode {
-  float: right;
-  padding-top: 30px;
-}
-
-.backup-private-address {
-  float: right;
-  padding-right: 10px;
-}
-
-.get-started-wrapper {
-	margin: 10px 0 40px;	
-}
-
-.strike {
-	text-decoration: line-through;	
-}
-</style>
 
 
 </head>
@@ -578,10 +182,10 @@ canvas, img {
           <li><a href="#">Wallet <span class="label label-danger">beta</span></a></li>
           <li class="dropdown"> <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
             <ul class="dropdown-menu">
-            	<li class="active"><a href="http://Merchant.airwallet.me">Merchants</a></li>
-              <li><a href="http://Exchange.airwallet.me">Exchange</a></li>
-              <li><a href="http://StarfieldEquity.com">Equity Brokerage</a></li>
-              <li><a href="http://BlockOfTrust.com">Real Estate</a></li>
+            	<li class="active"><a href="http://Merchant.airwallet.me" target="_blank">Merchants</a></li>
+              <li><a href="http://Exchange.airwallet.me" target="_blank">Exchange</a></li>
+              <li><a href="http://StarfieldEquity.com" target="_blank">Equity Brokerage</a></li>
+              <li><a href="http://BlockOfTrust.com" target="_blank">Real Estate</a></li>
             </ul>
           </li>
         </ul>
@@ -614,15 +218,26 @@ canvas, img {
             </div>
             <div id="open-wallet-signin">
               <div class="form-group">
-                <input id="electrum-seed" type="password" class="form-control" placeholder="Your electrum-like 12 words seed or master public key"/>
+                <div class="qr_button right" title="Scan QR Code">
+                   <img id="theImageFieldFront"> 
+                   <div class="overlay_file_loading"><img src="./static/img/loading.gif" /></div>
+                    <div class="overlay_file_button"><span class="glyphicon glyphicon-qrcode"></span></div>
+                    <div class="hidden_file_wrapper">
+                      <input type="file" capture="camera" accept="image/*" id="scanFieldFront">
+                    </div>
+                 </div>
+                 <input id="electrum-seed" type="password" class="form-control" placeholder="Your electrum-like 12 words seed or master public key"/>
               </div>
               <div class="form-group" id="signin-actions">
-                <button id="open-wallet" class="btn" disabled="disabled"><span class="glyphicon glyphicon-circle-arrow-up"></span> Open Wallet</button>
+                <button id="open-wallet" class="btn btn-primary" disabled="disabled"><span class="glyphicon glyphicon-circle-arrow-up"></span> Open Wallet</button>
                 <button id="generate-seed" class="btn"><span class="glyphicon glyphicon-circle-arrow-down"></span> Generate Seed</button>
               </div>
               <div id="electrum-seed-generator" class="form-group">
-                <div class="input-group"> <span class="input-group-addon">12-Word Seed:</span>
-                  <input id="electrum-generated-seed" type="text" class="form-control" />
+                <div class="input-group">
+                	<span class="input-group-addon tiny-pad">
+                  	<button id="electrum-seed-generator-qr" class="btn tiny-pad" rel="popover" data-container="body" data-toggle="popover" data-placement="right" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                  </span>
+                  <textarea id="electrum-generated-seed" class="form-control" wrap="soft"></textarea>
                 </div>
                 <div class="copy_to_clipboard"><a href="#" id="copy_button_seed">COPY SEED TO CLIPBOARD</a></div>
                 <div class="bs-callout bs-callout-danger">
@@ -643,17 +258,12 @@ canvas, img {
           </div>
         </div>
         <center>
-          
-           <p>&nbsp;</p>
-          <p><img src="airsewallet10.jpg" width="250" height="250" alt=""/></p>
+          <h3 align="center"><img src="airsewallet10.jpg" width="300" height="300" alt=""/></h3>
+
           <p>&nbsp;</p>
-		   
-            
-	    </center>
+        </center>
         <div class="col-sm-4">
-        
-        
-              <h3>Secure & Private</h3>
+          <h3>Secure & Private</h3>
           <p><span class="glyphicon glyphicon-ok"></span> 100% client-side wallet.</p>
           <p><span class="glyphicon glyphicon-ok"></span> Private keys never leave your browser.</p>
           <p><span class="glyphicon glyphicon-ok"></span> No data is stored on server.</p>
@@ -673,12 +283,11 @@ canvas, img {
           <p><span class="glyphicon glyphicon-ok"></span> Accessible from any web browser.</p>
         </div>
       </div>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
       <div id="wallet-div" class="row">
         <div id="wallet-menu-div" class="col-sm-2">
           <ul class="nav nav-pills nav-stacked">
-         
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
             <li class="nav-header">Wallet menu</li>
             <li class="active"><a href="#" id="addresses-nav"><i class="fa fa-align-justify"></i>Addresses</a></li>
             <li><a href="#" id="payment-nav">Send Payment</a></li>
@@ -815,35 +424,28 @@ canvas, img {
 <center>
 <a href="http://merchant.airwallet.me">  <p>&nbsp;</p>
 <p>&nbsp;</p>
-<iframe width="340" height="190" src="//www.youtube.com/embed/qbmsrTttXaM" frameborder="0" allowfullscreen></iframe>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>AirWallet for Merchants</p>
-</a><a href="http://merchant.airwallet.me">  <p><img src="suissewallet5.jpg" width="214" height="230" alt=""/></p>
+<p>&nbsp;</p>
+</a><a href="http://merchant.airwallet.me">  <p><img src="airwallet merchant img.jpg" width="214" height="230" alt=""/></p>
 <p>&nbsp;</p>
 </a>
 <p><a href="http://faucet.airwallet.me">AirWallet Faucets</a></p>
   <a href="http://faucet.airwallet.me"><p><img src="ss1.png" width="300" height="300" alt=""/></p></a>
-      <p>&nbsp;</p>
-      <p><a href="http://suisse.airwallet.me">SuisseCoin</a></p>
-  <a href="http://suisse.airwallet.me">
-  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p></a>
+      
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-  </a>
-  <a href="http://price.airwallet.me" target="_blank"><p>Wow Such Calculator</p>
-  <a href="http://price.airwallet.me" target="_blank"><p><img src="Dogecoin_logo.png" width="150" height="150" alt=""/></p>
-  <p>&nbsp;</p>
+  <a href="http://price.airwallet.me" target="_blank"><p>Wow Such Calculator<a href="http://price.airwallet.me" target="_blank"></p><p><img src="Dogecoin_logo.png" width="150" height="150" alt=""/></p>
   </a>
   <p>&nbsp;</p>
-  <a href="http://casino.airwallet.me" target="_blank"><p>Very Casino</p>
-  <a href="http://casino.airwallet.me" target="_blank"><p><img src="MultiDoge.png" width="150" height="150" alt=""/></p>
+  <p>&nbsp;</p>
+  <a href="http://casino.airwallet.me" target="_blank"><p>Very Casino<a href="http://casino.airwallet.me" target="_blank"></p><p><img src="MultiDoge.png" width="150" height="150" alt=""/></p>
   <p>&nbsp;</p>
   </a>
   <p>&nbsp;</p>
-  <a href="http://lotto.suissecoin.info">Lottery</a><a href="http://suisse.airwallet.me">
-  <p>&nbsp;</p>
-  </a>
+  <p><a href="http://lotto.suissecoin.info">Lottery</a></p>
+  <p><a href="http://suisse.airwallet.me">  </a>
+  </p>
   <a href="http://lotto.suissecoin.info"><p><img src="lottery-balls-cash.jpg" width="340" height="199" alt=""/></p></a>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
@@ -851,15 +453,25 @@ canvas, img {
   <p><img src="banner.jpg" width="340" height="60" alt=""/></p></a>
       <p>&nbsp;</p>
   <p>&nbsp;</p> 
-      <a href="http://security.airwallet.me" target="_blank">AirWallet Security Center</a>
-  <p>
-      <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="340" height="262" alt=""/></p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <a href="http://blocklens.com" target="_blank"><p><img src="blocklens.jpg" width="340" height="340" alt=""/></p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="340" height="270" alt=""/></p></a>
+      <p><a href="http://security.airwallet.me" target="_blank">AirWallet Security Center</a></p>
+      <p>&nbsp; </p>
+  <a href="http://security.airwallet.me" target="_blank"><p><img src="cloud.png" width="340" height="262" alt=""/></p>
+  <p>&nbsp;</p>
+ <a href="http://trilema.com/2013/how-to-airgap-a-practical-guide/"> <p>How to AirGap
+  </p>
+ <p>&nbsp;</p>
+  </a>
+<a href="http://trilema.com/2013/how-to-airgap-a-practical-guide/">  <p><img src="mindgap.jpg" width="320" height="160" alt=""/></p></a>  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Coming Soon:</p>
+  <p>&nbsp;</p>
+      <p><a href="http://suisse.airwallet.me" target="_blank">SuisseCoin</a></p>
+  <a href="http://suisse.airwallet.me" target="_blank">
+  <p><img src="swisscoin_detail.png" width="150" height="150" alt=""/></p></a>
+  <p>&nbsp;</p>
+  <a href="http://blocklens.com" target="_blank"><p><img src="blocklens.jpg" width="340" height="340" alt=""/></p></a>
+  <p>&nbsp;</p>
+  <a href="http://proofchain.info"><p><img src="proofchain new1.jpg" width="340" height="270" alt=""/></p></a>
   <p>  
   <p>
     
@@ -879,10 +491,10 @@ canvas, img {
     </p>
     <p><a href="mailto:admin@airwallet.me">contact admin@airwallet.me</a>
     <p>      
-    <p>*Thanks to bkchain, for the source code and Aaron for the mods* 
+    <p>*Thanks to bkchain, for the code and Aaron for the mods* 
     </p>
     <p>&nbsp;</p>
-    <p><a href="http://guide.airwallet.me">Guide</a> - <a href="#/static/api.txt">API</a> - <a href="mailto:admin@airwallet.me">Contact</a> - <a href="https://github.com/RagnarDanneskjold/AirWallet">Source code + Static version</a></p>
+    <p><a href="http://guide.airwallet.me">Guide</a> - <a href="http://api.airwallet.me">API</a> - <a href="mailto:admin@airwallet.me">Contact</a> - <a href="https://github.com/RagnarDanneskjold/AirWallet">Source code + Static version</a></p>
     <p>&nbsp;</p>
   </center>
 </p>
