@@ -1,7 +1,6 @@
-# bkchaind
+ported from # bkchaind
 
 Blockchain explorer daemon.
-http://bkchain.org
 
 ## Features
 * JSON API: block and tx info, address balance, operations and unspent outputs
@@ -19,13 +18,6 @@ http://bkchain.org
 ## Run
 * Typical command line: --blockchain=C:\Users\[yourusername]\AppData\Roaming\Bitcoin --database=btc --write-buffer=128 (all data will go into a "btc" subfolder)
 
-## TODO
-
-* Live address TX
-* Improve code quality, security and comments
-* Various documentation for database formats
-* Other features...
-* ...
 
 ## Dependencies
 
@@ -34,11 +26,3 @@ Most of them are included:
 * json-rpc-cpp (submodule)
 * leveldb (submodule)
 * blockchain (https://code.google.com/p/blockchain/, with various changes)
-
-## Donations
-
-Donation appreciated, to support development and server costs
-
-* BTC: 1LLqMFskaSaZ3w2LuH6dbQaULcy1Bu1b2R
-* PPC: PEiZ7r4KR85izAhfzQKJgJxdQkQ6PPXXEX
-* LTC: LXzHvrRMQVEHj6gvK4rsZ7HGopgqfxS7PS
